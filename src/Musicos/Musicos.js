@@ -16,7 +16,7 @@ export function Musicos (){
             url:"https://firebasestorage.googleapis.com/v0/b/spotifyarts-5c791.appspot.com/o/etapa2.png?alt=media&token=24060401-29db-42ac-96af-1c2038a92f0b"
         },
         {
-            nombre:"",
+            nombre:"Este año se lanzan dos colaboraciones de la artista, la primera fue  'FRIKI' junto al cantautor colombiano Feid. La segunda fue ' No te deseo mal ' junto al rapero Eladio Carrión. El 10 de febrero del año próximo lanzó junto a Becky G el Hit Mundial Mamiii, un sencillo que en poco tiempo obtuvo mucho éxito y que cuenta con más de 250M de reproducciones en YouTube. Próximamente la artista colombiana lanzó el sencillo ' Un Viaje ' en colaboración con Jotaerre, Alejo & Moffa. El próximo Hit fue Provenza (canción), el sencillo fue lanzado el 22 de abril de este mismo año, en poco tiempo se posicionó en el top 10 global, al poco tiempo de lanzamiento, KAROL G anuncia por su redes que llega una nueva etapa en su carrera, KG4 la Bichota se despide del pelo azul y posteriormente lo tiñe de Rojo.",
             rol:"2020-2022",
             url:"https://firebasestorage.googleapis.com/v0/b/spotifyarts-5c791.appspot.com/o/etapa3.jpg?alt=media&token=4683449a-2f92-4e25-ba7b-5d7b1901b152"
         },
@@ -58,25 +58,44 @@ export function Musicos (){
     //mapeando un arreglo para hacer render 
     return(
         <>
-        <div className="row row-clos-1 row-cols-md-4 g-3 mt-5 justify-content-center">
-            {
-                 musicos.map(function(musico){
-                    return(
-                
-                        <div className="col mt-3">
-                            <div className="card h-100">
-                                <img src={musico.url} className="img-fluid w-100 h-100" alt="foto" />
-                                <h2 className="text-center text-danger bg-dark" >{musico.rol}</h2>
-
-                            </div>
-                        </div>
-                        
-                    
-                        
-                    )
-                 })
-            }
+        <div className="row row-cols-1 row-cols-md-4 g-3 justify-content-center mt-5">
+          {
+          musicos.map(function(musico){
+            return(
+              <>
+              <div className="col mt-3 justify-content-center">
+                <div className="card h-100">
+                  <img src={musico.url} className="img-fluid w-100 h-80" alt="foto"/>
+                  <h3 className="text-center">{musico.nombre}</h3>
+                  <h4 className="text-center">{musico.rol}</h4>
+                </div>
+              </div>
+              </>
+            )
+          })
+          }
+          
         </div>
+        
+        <div className="row row-cols-1 row-cols-md-4 g-3 justify-content-center mt-5">
+          {
+            conciertoMemorables.map(function(conciertosMemorable1){
+              return(
+                <>
+                <div className="col mt-3 justify-content-center">
+                <div className="card h-100">
+                  <img src={conciertosMemorable1.foto} className="img-fluid w-100 h-80" alt="foto"/>
+                  <h3 className="text-center">{conciertosMemorable1.fecha}</h3>
+                  <h4 className="text-center">{conciertosMemorable1.pais}</h4>
+                  <h4 className="text-center">{conciertosMemorable1.descripcion}</h4>
+                </div>
+              </div>            
+                </>
+              )
+            })
+          }
+        </div>
+    
         <Footer></Footer>
         </>
     )

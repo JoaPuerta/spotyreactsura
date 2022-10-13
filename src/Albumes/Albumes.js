@@ -1,22 +1,43 @@
-import { useState } from "react"
-import { servicioSpoty } from "../services/servicioSpoty.js"
+import { useState, useEffect } from "react";
+import { servicioSpoty } from "../services/servicioSpoty.js";
+import { servicioTOKEN } from "../services/servicioTOKEN.js";
 
 
-export function Albumes (){
+export function Albumes() {
+  //declarando mi primer useState
+  const [canciones, setCanciones] = useState(null);
 
-    //declarando mi primer useState
-    const [ canciones,setCanciones]=useState(null)
+  //useState para la carga de datos
+  const [carga, setCarga] = useState(true);
 
-   servicioSpoty()
-   .then(function(respuesta){
-        setCanciones(respuesta.tracks)
-   })
-   console.log(canciones)
+  //usando el usseEffect
+  useEffect(function(){
+
+    servicioSpoty()
+    .then(function (respuesta) {
+      setCanciones(respuesta.tracks);
+      setCarga(false)
+    });
+  
+    console.log(canciones);    
+  },[])
+
+  if (carga==true) {
 
     return(
-
         <>
-            <h1>Hola soy albumes y soy un componente</h1>
+            <h1>Estoy cargando...</h1>
         </>
     )
+    
+  } else {
+
+    return (
+        <>
+          <h1>Hola soy albumes y soy un componente</h1>
+        </>
+      );
+    
+  }
+  
 }
